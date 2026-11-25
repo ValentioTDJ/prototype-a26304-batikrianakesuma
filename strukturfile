@@ -1,0 +1,28 @@
+back-endcapstone-project/
+├── src/
+│   ├── config/
+│   │   ├── db.js                 # Konfigurasi pool koneksi PostgreSQL (pg)
+│   │   └── env.js                # Sentralisasi variabel .env (PORT, DB_URL, AI_API_URL)
+│   ├── controllers/
+│   │   ├── productController.js  # Handle request/response katalog & detail
+│   │   ├── chatController.js     # Handle request/response widget chatbot
+│   │   └── faqController.js      # Handle fallback FAQ statis
+│   ├── services/
+│   │   ├── productService.js     # Query SQL ke tabel products & product_recommendations
+│   │   ├── aiService.js          # Integrasi Axios ke FastAPI AE + timeout & error handling
+│   │   └── faqService.js         # Query SQL ke tabel faqs
+│   ├── routes/
+│   │   ├── index.js              # Gabungan semua route (/api/v1/...)
+│   │   ├── productRoutes.js      # GET /products, GET /products/:id
+│   │   ├── chatRoutes.js         # POST /chat
+│   │   └── faqRoutes.js          # GET /faqs
+│   ├── middlewares/
+│   │   ├── errorHandler.js       # Global error handler agar server tidak crash
+│   │   └── validateRequest.js    # Validasi input (cek pesan kosong, tipe data salah)
+│   └── app.js                    # Konfigurasi Express (CORS, JSON parser, routes)
+├── database/
+│   ├── schema.sql                # File SQL di atas
+│   └── seed.js                   # Script untuk import data CSV/JSON dari tim DS ke Postgres
+├── .env.example                  # Template environment variables untuk tim
+├── package.json
+└── server.js                     # Entry point aplikasi
